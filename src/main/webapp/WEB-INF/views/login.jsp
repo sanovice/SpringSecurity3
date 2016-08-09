@@ -5,17 +5,16 @@
 	<jsp:param name="pageTitle" value="Login"/>
 </jsp:include>
 
-<h1>Please Log In to Your Account</h1>
+<h1>Please Log Into Your Account</h1>
 <p>
-	Please use the form below to log in to your account.
+	Please use the form below to log into your account.
 </p>
 <form action="j_spring_security_check" method="post">
 	<label for="j_username">Login</label>:
 	<input id="j_username" name="j_username" size="20" maxlength="50" type="text"/>
 	<br />
 
-<%-- For experimentation with an alternate checkbox name --%>
-<%-- 
+<%-- For experimentation with an alternate checkbox name
 	<input id="_remember_me" name="_remember_me" type="checkbox" value="true"/>
 	<label for="_remember_me">Remember Me?</label>
 	<br />

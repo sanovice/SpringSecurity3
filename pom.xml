@@ -94,6 +94,13 @@
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>${hibernate.version}</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.annotation/jsr250-api -->
+		<!-- chater5 -->
+		<dependency>
+		    <groupId>javax.annotation</groupId>
+		    <artifactId>jsr250-api</artifactId>
+		    <version>1.0</version>
+		</dependency>
 
 		
 		<!-- Test Artifacts -->

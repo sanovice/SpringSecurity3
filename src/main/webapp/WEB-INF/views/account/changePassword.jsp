@@ -7,6 +7,11 @@
 
 <h1>Change Password</h1>
 <form method="post">
+	<%-- Ch 4 UserDetailsManager --%>
+	<label for="oldpassword">Old Password</label>:
+	<input id="oldpassword" name="oldpassword" size="20" maxlength="50" type="password"/>
+	<br />
+
 	<label for="password">New Password</label>:
 	<input id="password" name="password" size="20" maxlength="50" type="password"/>
 	<br />

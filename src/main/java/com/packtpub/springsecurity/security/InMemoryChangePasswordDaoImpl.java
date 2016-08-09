@@ -12,7 +12,6 @@ public class InMemoryChangePasswordDaoImpl extends InMemoryDaoImpl implements IC
 	/* (non-Javadoc)
 	 * @see com.packtpub.springsecurity.security.IChangePassword#changePassword(java.lang.String, java.lang.String)
 	 */
-	@SuppressWarnings("deprecation")
 	@Override
 	public void changePassword(String username, String password) {
 		// get the UserDetails

@@ -14,5 +14,5 @@
 	</bean>
 
 	<context:annotation-config />
-	<context:component-scan base-package="com.packtpub.springsecurity"/>
+	<context:component-scan base-package="com.packtpub.springsecurity.web"/>
 </beans>
