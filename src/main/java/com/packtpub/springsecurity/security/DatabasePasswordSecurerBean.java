@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.PreparedStatementCallback;
@@ -28,6 +30,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
  * @author Mularien
  */
 public class DatabasePasswordSecurerBean extends JdbcDaoSupport {
+	
+	private Logger log = LoggerFactory.getLogger(getClass()); 
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	// Ch 4 Salt Exercise
@@ -37,6 +42,10 @@ public class DatabasePasswordSecurerBean extends JdbcDaoSupport {
 	private UserDetailsService userDetailsService;
 	
 	public void secureDatabase() {
+		
+		log.info("secureDatabase  start....");
+		
+		
 		getJdbcTemplate().query("select username, password from users", new RowCallbackHandler(){
 			@Override
 			public void processRow(ResultSet rs) throws SQLException {

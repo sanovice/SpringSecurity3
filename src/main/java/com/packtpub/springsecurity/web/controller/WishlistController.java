@@ -22,11 +22,13 @@ import com.packtpub.springsecurity.data.Item;
 public class WishlistController extends BaseController {
 	@RequestMapping(method=RequestMethod.GET)
 	public void show() {
+		log.info("show GET");
 		
 	}
 	
 	@ModelAttribute("wishlistItems")
 	public Collection<Item> getWishlistItems() {
+		log.info("getWishlistItems");
 		return new ArrayList<Item>();
 	}
 }

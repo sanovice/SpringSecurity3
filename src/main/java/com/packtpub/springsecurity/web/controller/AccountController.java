@@ -31,6 +31,8 @@ public class AccountController extends BaseController {
 	}
 	@RequestMapping(value="/account/changePassword.do",method=RequestMethod.POST)
 	public String submitChangePasswordPage(@RequestParam("password") String newPassword) {
+		log.info("newPassword:{}", newPassword);
+		
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		String username = principal.toString();

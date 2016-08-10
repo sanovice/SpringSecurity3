@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.authentication.dao.SaltSource;
@@ -24,6 +26,9 @@ import com.packtpub.springsecurity.security.SaltedUser;
  * @author Mularien
  */
 public class CustomJdbcDaoImpl extends JdbcDaoImpl implements IChangePassword {
+	
+	private Logger log = LoggerFactory.getLogger(getClass());
+	
 	// Ch 4 Password Encoder and Salt Exercise
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -31,6 +36,8 @@ public class CustomJdbcDaoImpl extends JdbcDaoImpl implements IChangePassword {
 	private SaltSource saltSource;
 
 	public void changePassword(String username, String password) {
+		log.info("changePassword  username:{}, password:{}", username, password); 
+		
 //		getJdbcTemplate().update(
 //				"UPDATE USERS SET PASSWORD = ? WHERE USERNAME = ?",
 //				password, username);
@@ -47,6 +54,10 @@ public class CustomJdbcDaoImpl extends JdbcDaoImpl implements IChangePassword {
 	protected UserDetails createUserDetails(String username,
 			UserDetails userFromUserQuery,
 			List<GrantedAuthority> combinedAuthorities) {
+		
+
+		log.info("createUserDetails  username:{}", username); 
+		
         String returnUsername = userFromUserQuery.getUsername();
 
         if (!isUsernameBasedPrimaryKey()) {
@@ -59,6 +70,8 @@ public class CustomJdbcDaoImpl extends JdbcDaoImpl implements IChangePassword {
 
 	@Override
 	protected List<UserDetails> loadUsersByUsername(String username) {
+		log.info("loadUsersByUsername  username:{}", username); 
+		
         return getJdbcTemplate().query(getUsersByUsernameQuery(), new String[] {username}, new RowMapper<UserDetails>() {
             public UserDetails mapRow(ResultSet rs, int rowNum) throws SQLException {
                 String username = rs.getString(1);

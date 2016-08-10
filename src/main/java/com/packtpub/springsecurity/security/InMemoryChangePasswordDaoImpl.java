@@ -1,5 +1,7 @@
 package com.packtpub.springsecurity.security;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.memory.InMemoryDaoImpl;
 
@@ -9,11 +11,18 @@ import org.springframework.security.core.userdetails.memory.InMemoryDaoImpl;
  * @author Mularien
  */
 public class InMemoryChangePasswordDaoImpl extends InMemoryDaoImpl implements IChangePassword {
+	
+	private Logger log = LoggerFactory.getLogger(getClass()); 
+	
 	/* (non-Javadoc)
 	 * @see com.packtpub.springsecurity.security.IChangePassword#changePassword(java.lang.String, java.lang.String)
 	 */
 	@Override
 	public void changePassword(String username, String password) {
+		
+		log.info("changepassword username:{}, password:{}", username, password);
+		
+		
 		// get the UserDetails
 		User userDetails = (User) getUserMap().getUser(username);
 		// create a new UserDetails with the new password
